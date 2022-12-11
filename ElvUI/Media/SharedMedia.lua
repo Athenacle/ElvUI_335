@@ -6,7 +6,140 @@ function E:TextureString(texString, dataString)
 	return "|T"..texString..(dataString or "").."|t"
 end
 
+L = {}
+
+ITM={}
+RITM={}
+
+    L.Angel = "天使"
+    L.Angry = "生气"
+    L.Biglaugh = "大笑"
+    L.Clap = "鼓掌"
+    L.Cool = "酷"
+    L.Cry = "哭"
+    L.Cute = "可爱"
+    L.Despise = "鄙视"
+    L.Dreamsmile = "美梦"
+    L.Embarras = "尴尬"
+    L.Evil = "邪恶"
+    L.Excited = "兴奋"
+    L.Faint = "晕"
+    L.Fight = "打架"
+    L.Flu = "流感"
+    L.Freeze = "呆"
+    L.Frown = "皱眉"
+    L.Greet = "致敬"
+    L.Grimace = "鬼脸"
+    L.Growl = "龇牙"
+    L.Happy = "开心"
+    L.Heart = "心"
+    L.Horror = "恐惧"
+    L.Ill = "生病"
+    L.Innocent = "无辜"
+    L.Kongfu = "功夫"
+    L.Love = "花痴"
+    L.Mail = "邮件"
+    L.Makeup = "化妆"
+    L.Mario = "马里奥"
+    L.Meditate = "沉思"
+    L.Miserable = "可怜"
+    L.Okay = "好"
+    L.Pretty = "漂亮"
+    L.Puke = "吐"
+    L.Shake = "握手"
+    L.Shout = "喊"
+    L.Silent = "闭嘴"
+    L.Shy = "害羞"
+    L.Sleep = "睡觉"
+    L.Smile = "微笑"
+    L.Suprise = "吃惊"
+    L.Surrender = "失败"
+    L.Sweat = "流汗"
+    L.Tear = "流泪"
+    L.Tears = "悲剧"
+    L.Think = "想"
+    L.Titter = "偷笑"
+    L.Ugly = "猥琐"
+    L.Victory = "胜利"
+    L.Volunteer = "雷锋"
+    L.Wronged = "委屈"
+
+
+local IT = {{"{rt1}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1"},
+			{"{rt2}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_2"},
+			{"{rt3}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_3"},
+			{"{rt4}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_4"},
+			{"{rt5}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_5"},
+			{"{rt6}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_6"},
+			{"{rt7}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_7"},
+			{"{rt8}", "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"},
+			{"{"..L.Angel.."}", M .. [[ChatIcons\angel.tga]] },
+			{"{"..L.Angry.."}", M .. [[ChatIcons\angry.tga]] },
+			{"{"..L.Biglaugh.."}", M .. [[ChatIcons\biglaugh.tga]] },
+			{"{"..L.Clap.."}", M .. [[ChatIcons\clap.tga]] },
+			{"{"..L.Cool.."}", M .. [[ChatIcons\cool.tga]] },
+			{"{"..L.Cry.."}", M .. [[ChatIcons\cry.tga]] },
+			{"{"..L.Cute.."}", M .. [[ChatIcons\cutie.tga]] },
+			{"{"..L.Despise.."}", M .. [[ChatIcons\despise.tga]] },
+			{"{"..L.Dreamsmile.."}", M .. [[ChatIcons\dreamsmile.tga]] },
+			{"{"..L.Embarras.."}", M .. [[ChatIcons\embarrass.tga]] },
+			{"{"..L.Evil.."}", M .. [[ChatIcons\evil.tga]] },
+			{"{"..L.Excited.."}", M .. [[ChatIcons\excited.tga]] },
+			{"{"..L.Faint.."}", M .. [[ChatIcons\faint.tga]] },
+			{"{"..L.Fight.."}", M .. [[ChatIcons\fight.tga]] },
+			{"{"..L.Flu.."}", M .. [[ChatIcons\flu.tga]] },
+			{"{"..L.Freeze.."}", M .. [[ChatIcons\freeze.tga]] },
+			{"{"..L.Frown.."}", M .. [[ChatIcons\frown.tga]] },
+			{"{"..L.Greet.."}", M .. [[ChatIcons\greet.tga]] },
+			{"{"..L.Grimace.."}", M .. [[ChatIcons\grimace.tga]] },
+			{"{"..L.Growl.."}", M .. [[ChatIcons\growl.tga]] },
+			{"{"..L.Happy.."}", M .. [[ChatIcons\happy.tga]] },
+			{"{"..L.Heart.."}", M .. [[ChatIcons\heart.tga]] },
+			{"{"..L.Horror.."}", M .. [[ChatIcons\horror.tga]] },
+			{"{"..L.Ill.."}", M .. [[ChatIcons\ill.tga]] },
+			{"{"..L.Innocent.."}", M .. [[ChatIcons\innocent.tga]] },
+			{"{"..L.Kongfu.."}", M .. [[ChatIcons\kongfu.tga]] },
+			{"{"..L.Love.."}", M .. [[ChatIcons\love.tga]] },
+			{"{"..L.Mail.."}", M .. [[ChatIcons\mail.tga]] },
+			{"{"..L.Makeup.."}", M .. [[ChatIcons\makeup.tga]] },
+			{"{"..L.Mario.."}", M .. [[ChatIcons\mario.tga]] },
+			{"{"..L.Meditate.."}", M .. [[ChatIcons\meditate.tga]] },
+			{"{"..L.Miserable.."}", M .. [[ChatIcons\miserable.tga]] },
+			{"{"..L.Okay.."}", M .. [[ChatIcons\okay.tga]] },
+			{"{"..L.Pretty.."}", M .. [[ChatIcons\pretty.tga]] },
+			{"{"..L.Puke.."}", M .. [[ChatIcons\puke.tga]] },
+			{"{"..L.Shake.."}", M .. [[ChatIcons\shake.tga]] },
+			{"{"..L.Shout.."}", M .. [[ChatIcons\shout.tga]] },
+			{"{"..L.Silent.."}", M .. [[ChatIcons\shuuuu.tga]] },
+			{"{"..L.Shy.."}", M .. [[ChatIcons\shy.tga]] },
+			{"{"..L.Sleep.."}", M .. [[ChatIcons\sleep.tga]] },
+			{"{"..L.Smile.."}", M .. [[ChatIcons\smile.tga]] },
+			{"{"..L.Suprise.."}", M .. [[ChatIcons\suprise.tga]] },
+			{"{"..L.Surrender.."}", M .. [[ChatIcons\surrender.tga]] },
+			{"{"..L.Sweat.."}", M .. [[ChatIcons\sweat.tga]] },
+			{"{"..L.Tear.."}", M .. [[ChatIcons\tear.tga]] },
+			{"{"..L.Tears.."}", M .. [[ChatIcons\tears.tga]] },
+			{"{"..L.Think.."}", M .. [[ChatIcons\think.tga]] },
+			{"{"..L.Titter.."}", M .. [[ChatIcons\titter.tga]] },
+			{"{"..L.Ugly.."}", M .. [[ChatIcons\ugly.tga]] },
+			{"{"..L.Victory.."}", M .. [[ChatIcons\victory.tga]] },
+			{"{"..L.Volunteer.."}", M .. [[ChatIcons\volunteer.tga]] },
+			{"{"..L.Wronged.."}", M .. [[ChatIcons\wronged.tga]] }
+			}
+
+	for k,v in pairs(IT) do
+		ITM[v[1]]=v[2]
+	end
+	for k,v in pairs(IT) do
+		RITM[v[2]]=v[1]
+	end
+
+
 E.Media = {
+	CE_Tag = L,
+	CE_ITM = ITM,
+	CE_RITM = RITM,
+
 	Arrows = {
 		Arrow0 = M..[[Arrows\Arrow0.tga]],
 		Arrow1 = M..[[Arrows\Arrow1.tga]],
