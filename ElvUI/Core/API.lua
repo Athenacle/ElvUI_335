@@ -86,7 +86,7 @@ end
 
 function E:GetTalentSpecInfo(isInspect)
 	local talantGroup = GetActiveTalentGroup(isInspect)
-	local maxPoints, specIdx, specName, specIcon = 0, 0
+	local maxPoints, specIdx, specName, specIcon = 0, 0, nil, nil
 
 	for i = 1, MAX_TALENT_TABS do
 		local name, icon, pointsSpent = GetTalentTabInfo(i, isInspect, nil, talantGroup)
@@ -178,7 +178,7 @@ do
 	local CPU_USAGE = {}
 	local function CompareCPUDiff(showall, minCalls)
 		local greatestUsage, greatestCalls, greatestName, newName, newFunc
-		local greatestDiff, lastModule, mod, usage, calls, diff = 0
+		local greatestDiff, lastModule, mod, usage, calls, diff = 0, nil, nil, nil, nil, nil
 
 		for name, oldUsage in pairs(CPU_USAGE) do
 			newName, newFunc = strmatch(name, "^([^:]+):(.+)$")

@@ -766,7 +766,7 @@ function B:Layout(isBank)
 	local numKey = GetKeyRingSize()
 	local numKeyColumns = 6
 	if not isBank then
-		local totalSlots, numKeyRows, lastRowKey = 0, 1
+		local totalSlots, numKeyRows, lastRowKey = 0, 1, nil
 
 		for i = 1, numKey do
 			totalSlots = totalSlots + 1

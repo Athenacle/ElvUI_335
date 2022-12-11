@@ -284,7 +284,7 @@ function lib:SendPluginVersionCheck(message)
 
 	local maxChar, msgLength = 254 - len(lib.prefix), len(message)
 	if msgLength > maxChar then
-		local delay, splitMessage = 0
+		local delay, splitMessage = 0, nil
 
 		for _ = 1, ceil(msgLength / maxChar) do
 			splitMessage = match(sub(message, 1, maxChar), ".+;")

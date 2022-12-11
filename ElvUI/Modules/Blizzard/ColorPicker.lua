@@ -105,7 +105,7 @@ local function ColorPPBoxR_SetFocus()
 	ColorPPBoxR:SetFocus()
 end
 
-local delayWait, delayFunc = 0.15
+local delayWait, delayFunc = 0.15, nil
 local function delayCall()
 	if delayFunc then
 		delayFunc()

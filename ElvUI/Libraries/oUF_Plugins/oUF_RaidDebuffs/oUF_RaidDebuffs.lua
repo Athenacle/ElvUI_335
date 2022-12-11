@@ -230,7 +230,7 @@ local function Update(self, event, unit)
 		_stackThreshold = 0
 	else
 		local _, name, icon, count, debuffType, duration, expirationTime, spellId
-		local _priority, priority = 0
+		local _priority, priority = 0, nil
 
 		for i = 1, 40 do
 			name, _, icon, count, debuffType, duration, expirationTime, _, _, _, spellId = UnitAura(unit, i, "HARMFUL")

@@ -36,7 +36,7 @@ local WorldGetNumChildren = WorldFrame.GetNumChildren
 
 local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 
-local lastChildern, numChildren, hasTarget = 0, 0
+local lastChildern, numChildren, hasTarget = 0, 0, nil
 local OVERLAY = [=[Interface\TargetingFrame\UI-TargetingFrame-Flash]=]
 local FSPAT = "%s*"..(gsub(gsub(_G.FOREIGN_SERVER_LABEL, "^%s", ""), "[%*()]", "%%%1")).."$"
 

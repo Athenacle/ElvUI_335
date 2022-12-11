@@ -103,7 +103,7 @@ end
 local function GetInstanceImages(...)
 	local numTextures = select("#", ...) / 4
 
-	local argn, title, texture = 1
+	local argn, title, texture = 1, nil, nil
 	for i = 1, numTextures do
 		title, texture = select(argn, ...)
 		if texture ~= "" then

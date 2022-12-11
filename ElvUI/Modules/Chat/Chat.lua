@@ -791,7 +791,7 @@ function CH:FindURL(event, msg, author, ...)
 		text = gsub(gsub(text, "(%S)({.-})", "%1 %2"), "({.-})(%S)", "%1 %2")
 	end
 
-	local x, found = 0
+	local x, found = 0, nil
 	local newMsg = gsub(gsub(text, "(%S)(|c.-|H.-|h.-|h|r)", "%1 %2"), "(|c.-|H.-|h.-|h|r)(%S)", "%1 %2")
 
 	-- https://example.com

@@ -7,7 +7,7 @@ local gsub, match, format = string.gsub, string.match, string.format
 
 local GetSpellInfo = GetSpellInfo
 
-local quickSearchText, selectedSpell, selectedFilter = ""
+local quickSearchText, selectedSpell, selectedFilter = "", nil, nil
 
 local function filterMatch(s,v)
 	local m1, m2, m3, m4 = "^"..v.."$", "^"..v..",", ","..v.."$", ","..v..","

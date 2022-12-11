@@ -38,7 +38,7 @@ function THREAT:UpdatePosition()
 end
 
 function THREAT:GetLargestThreatOnList(percent)
-	local largestValue, largestUnit = 0
+	local largestValue, largestUnit = 0, nil
 	for unit, threatPercent in pairs(self.list) do
 		if threatPercent > largestValue then
 			largestValue = threatPercent
