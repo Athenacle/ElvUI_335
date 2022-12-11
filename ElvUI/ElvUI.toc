@@ -3,7 +3,7 @@
 ## Version: 6.09
 ## Title: |cff1784d1E|r|cffe5e3e3lvUI|r
 ## Notes: User Interface replacement AddOn for World of Warcraft.
-## SavedVariables: ElvDB, ElvPrivateDB
+## SavedVariables: ElvDB, ElvPrivateDB, GS_Settings
 ## SavedVariablesPerCharacter: ElvCharacterDB
 ## OptionalDeps: Blizzard_DebugTools, SharedMedia, Tukui, ButtonFacade
 ## X-oUF: ElvUF
@@ -17,3 +17,5 @@ Settings\Load_Config.xml
 Core\Load_Core.xml
 Layout\Load_Layout.xml
 Modules\Load_Modules.xml
+
+Plugins\Load_Plugins.xml
