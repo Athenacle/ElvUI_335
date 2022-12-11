@@ -251,6 +251,12 @@ function CH:GetSmileyReplacementText(msg)
 		end
 	end
 
+	for tag in gmatch(outstr, "({[^}]+})") do
+		if E.Media.CE_ITM[tag] then
+			outstr = gsub(outstr, tag, " |T"..E.Media.CE_ITM[tag] .. ":35|t", 1)
+		end
+	end
+
 	return outstr
 end
 

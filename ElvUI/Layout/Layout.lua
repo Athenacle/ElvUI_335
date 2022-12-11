@@ -275,6 +275,60 @@ function LO:ToggleChatPanels()
 	end
 end
 
+
+local function createIconButton(text,texture,i, parent)
+	local chatTab=_G["ChatIconButton"..i] or
+		CreateFrame("Button","ChatIconButton"..i, parent)
+	if not _G["ChatIconButton"..i] then
+		_G["ChatIconButton"..i] = chatTab
+	end
+	texture = texture or "empty texture"
+
+	chatTab:Size(30,30)
+	chatTab.id = i
+	chatTab.text = text
+	chatTab.texture = texture
+	chatTab.tex = chatTab:CreateTexture(nil, "OVERLAY")
+	chatTab.tex:SetInside()
+	chatTab.tex:SetTexture(texture)
+	chatTab.tex:SetAlpha(1)
+	chatTab:SetAlpha(1)
+	chatTab:Show()
+
+	chatTab:SetScript("OnClick", function (self)
+		local editBox = --[[DEFAULT_CHAT_FRAME.editBox or ]]ChatFrame1EditBox or SELECTED_CHAT_FRAME.editBox
+		if not editBox:IsShown() then
+			editBox:Show()
+		end
+		editBox:SetFocus()
+
+		local _,font = SELECTED_CHAT_FRAME:GetFont()
+		font = floor(font)
+
+		editBox:Insert(self.text)
+		parent:Hide()
+	end)
+
+	return chatTab
+end
+
+local function arrangeIconButton(frame, icons)
+	local px = 1
+	local py = 1
+	local DWC_ICON_SIZE_X, DWC_ICON_SIZE_Y, DWC_ICON_NUMBER_X = 32, 27, 11
+
+	for i=1, #icons, 1 do
+		icons[i]:SetPoint("TOPLEFT", frame, "TOPLEFT", (px - 1) * DWC_ICON_SIZE_X + 5, -1 * (py - 1) * DWC_ICON_SIZE_Y - 5)
+		px = px + 1
+		if px == DWC_ICON_NUMBER_X + 1 then
+			px = 1
+			py = py + 1
+		end
+	end
+end
+
+
+
 function LO:CreateChatPanels()
 	local SPACING = E.Border*3 - E.Spacing
 	local SIDE_BUTTON_SPACING = (E.PixelMode and E.Border*4) or SPACING*2
@@ -295,6 +349,43 @@ function LO:CreateChatPanels()
 	lchat.tex:SetInside()
 	lchat.tex:SetTexture(E.db.chat.panelBackdropNameLeft)
 	lchat.tex:SetAlpha(E.db.general.backdropfadecolor.a - 0.7 > 0 and E.db.general.backdropfadecolor.a - 0.7 or 0.5)
+
+	local cif = CreateFrame("Frame", "IconChatFrame", lchat)
+	cif:Size(350, 200)
+	cif:Point("TOPRIGHT", 350, 200)
+	cif:SetAlpha(1)
+	cif:Hide()
+
+	_G["IconTableFrame"] = cif
+
+	iconFrames = {}
+	local i = 0
+	for k,v in pairs(E.Media.CE_ITM) do
+		i = i + 1
+		print(i)
+		iconFrames[i] = createIconButton(k,v, i, cif)
+	end
+	arrangeIconButton(cif, iconFrames)
+
+	local ci = CreateFrame("Button", "ChatFrameToggleIcon", lchat)
+	ci:Size(26, 26)
+	ci:Point("TOPRIGHT", -10, -5)
+	ci:SetAlpha(1)
+	ci:RegisterForClicks("AnyUp")
+	ci:SetScript("OnClick", function ()
+		local f = _G["IconTableFrame"]
+		if not f then print("not _G['IconTableFrame'] exists! ") return end
+		if f:IsShown() then
+			f:Hide()
+		else
+			f:Show()
+		end
+	end)
+
+	ci.tex = ci:CreateTexture(nil, "OVERLAY")
+	ci.tex:SetInside()
+	ci.tex:SetTexture("Interface\\AddOns\\ElvUI\\Media\\ChatIcons\\smile.tga")
+	ci:Show()
 
 	--Left Chat Tab
 	local lchattab = CreateFrame("Frame", "LeftChatTab", lchat)
