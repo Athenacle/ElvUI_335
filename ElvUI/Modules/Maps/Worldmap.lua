@@ -249,6 +249,7 @@ function M:Initialize()
 	--	WorldMapCompareTooltip2:SetFrameLevel(WORLDMAP_POI_FRAMELEVEL + 110)
 	end
 
+	WorldMapFrame:SetFrameStrata("TOOLTIP")
 	self.Initialized = true
 end
 
