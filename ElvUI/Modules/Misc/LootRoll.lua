@@ -383,6 +383,10 @@ function M:START_LOOT_ROLL(_, rollID, rollTime)
 	f.itemButton.rollID = rollID
 	f.itemButton.link = GetLootRollItemLink(rollID)
 
+	local _, Id = strsplit(":", f.itemButton.link)
+	local itemId = tonumber(Id)
+	f.itemButton.itemId = itemId
+
 	if count > 1 then
 		f.itemName:SetFormattedText("%dx %s", count, name)
 	else
@@ -407,10 +411,19 @@ function M:START_LOOT_ROLL(_, rollID, rollTime)
 
 	AlertFrame_FixAnchors()
 
-	if E.db.general.autoRoll and E.mylevel == MAX_PLAYER_LEVEL and quality == 2 and not bindOnPickUp then
-		if canDisenchant then
-			RollOnLoot(rollID, 3)
-		else
+	if E.db.general.autoRoll then
+	 	if E.mylevel == MAX_PLAYER_LEVEL and quality == 2 and not bindOnPickUp then
+			if canDisenchant then
+				RollOnLoot(rollID, 3)
+			else
+				RollOnLoot(rollID, 2)
+			end
+		end
+		if itemId == 39152 then -- 急救
+			RollOnLoot(rollID, 0)
+		end
+
+		if itemId == 43102 then -- 冰冻宝珠
 			RollOnLoot(rollID, 2)
 		end
 	end
